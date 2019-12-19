@@ -25,6 +25,8 @@ import { CreateCenterComponent } from './home/sadmin-powers/create-center/create
 import { CenterService } from './services/center.service';
 import { AdminPowersComponent } from './home/admin-powers/admin-powers.component';
 import { ResearchComponent } from './home/research/research.component';
+import { DropZoneDirective } from './home/research/drop-zone.directive';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ResearchComponent } from './home/research/research.component';
     ConfirmDialogComponent,
     CreateCenterComponent,
     AdminPowersComponent,
-    ResearchComponent
+    ResearchComponent,
+    DropZoneDirective
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ import { ResearchComponent } from './home/research/research.component';
     FirebaseModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, CategoryService, CenterService],
+  providers: [AuthService, CategoryService, CenterService, AngularFireStorage],
   bootstrap: [AppComponent],
   entryComponents: [
     SigninComponent,
