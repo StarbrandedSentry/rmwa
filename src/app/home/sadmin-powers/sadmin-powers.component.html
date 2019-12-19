@@ -2,8 +2,10 @@
   <div class="container">
     <h2>Centers</h2>
     <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>SOMETHING</mat-expansion-panel-header>
+      <mat-expansion-panel *ngFor="let center of centerService.centers">
+        <mat-expansion-panel-header>{{
+          center.name
+        }}</mat-expansion-panel-header>
         <h3>Admins</h3>
       </mat-expansion-panel>
     </mat-accordion>

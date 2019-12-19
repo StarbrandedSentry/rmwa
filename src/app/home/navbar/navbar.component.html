@@ -16,6 +16,18 @@
       routerLinkActive="nav-active"
       ><div class="text">configure</div></a
     >
+    <a
+      *ngIf="user && user.role == 2"
+      [routerLink]="['/home/admin']"
+      routerLinkActive="nav-active"
+      ><div class="text">admin</div></a
+    >
+    <a
+      *ngIf="user && user.role == 2"
+      [routerLink]="['/home/research']"
+      routerLinkActive="nav-active"
+      ><div class="text">researches</div></a
+    >
   </div>
   <div *ngIf="afAuth.user | async; then userButton; else signInButton"></div>
   <!-- IF THE USER IS SIGNED IN -->

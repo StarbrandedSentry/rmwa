@@ -6,6 +6,8 @@ import { SadminConfigureComponent } from './home/sadmin-configure/sadmin-configu
 import { SadminPowersComponent } from './home/sadmin-powers/sadmin-powers.component';
 import { DashComponent } from './home/dash/dash.component';
 import { CreateCenterComponent } from './home/sadmin-powers/create-center/create-center.component';
+import { AdminPowersComponent } from './home/admin-powers/admin-powers.component';
+import { ResearchComponent } from './home/research/research.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,7 +22,9 @@ const routes: Routes = [
         component: SadminConfigureComponent
       },
       { path: 'centers', component: SadminPowersComponent },
-      { path: 'create-center', component: CreateCenterComponent }
+      { path: 'create-center', component: CreateCenterComponent },
+      { path: 'research', component: ResearchComponent },
+      { path: 'admin', component: AdminPowersComponent }
     ]
   }
 ];

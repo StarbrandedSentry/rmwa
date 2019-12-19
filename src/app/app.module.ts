@@ -23,6 +23,8 @@ import { CreateCategoryComponent } from './dialogs/create-category/create-catego
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 import { CreateCenterComponent } from './home/sadmin-powers/create-center/create-center.component';
 import { CenterService } from './services/center.service';
+import { AdminPowersComponent } from './home/admin-powers/admin-powers.component';
+import { ResearchComponent } from './home/research/research.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { CenterService } from './services/center.service';
     EditDialogComponent,
     CreateCategoryComponent,
     ConfirmDialogComponent,
-    CreateCenterComponent
+    CreateCenterComponent,
+    AdminPowersComponent,
+    ResearchComponent
   ],
   imports: [
     BrowserModule,

@@ -36,6 +36,9 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+    this.afAuth.user.subscribe(user => {
+      console.log(user);
+    });
   }
 
   closeMenu(): void {
