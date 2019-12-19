@@ -2,11 +2,56 @@
   <div class="container">
     <h2>Centers</h2>
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let center of centerService.centers">
+      <mat-expansion-panel
+        *ngFor="let center of centerService.centers"
+        (click)="getAdmins(center.id)"
+      >
         <mat-expansion-panel-header>{{
           center.name
         }}</mat-expansion-panel-header>
         <h3>Admins</h3>
+        <div *ngFor="let admin of centerService.admins">
+          {{ admin.name }}
+        </div>
+
+        <div class="buttons">
+          <button mat-raised-button color="primary" (click)="tryAddAdmin()">
+            Add Admins
+          </button>
+        </div>
+
+        <div class="create" *ngIf="isAddingAdmin">
+          <mat-form-field>
+            <input matInput placeholder="Admin name" />
+          </mat-form-field>
+          <div class="row">
+            <mat-form-field>
+              <input matInput placeholder="Admin email" required />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Admin password"
+                type="password"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Confirm password"
+                type="password"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="buttons">
+            <button mat-raised-button color="primary">Add</button>
+            <button mat-button (click)="closeAdminAddition()">Cancel</button>
+          </div>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
     <div class="actions">

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../../dialogs/edit-dialog/edit-dialog.component';
 import { CreateCategoryComponent } from '../../dialogs/create-category/create-category.component';
 import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dialog.component';
+import { GuardService } from '../../services/guard.service';
 
 @Component({
   selector: 'app-sadmin-configure',
@@ -13,9 +14,15 @@ import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dia
 export class SadminConfigureComponent implements OnInit {
   // categories: Category[];
   newCategoryName: string;
-  constructor(private catService: CategoryService, public dialog: MatDialog) {}
+  constructor(
+    private catService: CategoryService,
+    public dialog: MatDialog,
+    private guard: GuardService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.guard.checkRole(1);
+  }
 
   openEditDialog(id: string): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {

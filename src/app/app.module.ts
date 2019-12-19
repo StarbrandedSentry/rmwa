@@ -26,6 +26,7 @@ import { CenterService } from './services/center.service';
 import { AdminPowersComponent } from './home/admin-powers/admin-powers.component';
 import { ResearchComponent } from './home/research/research.component';
 import { SessionService } from './services/session.service';
+import { CreateAdminComponent } from './home/sadmin-powers/create-admin/create-admin.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SessionService } from './services/session.service';
     ConfirmDialogComponent,
     CreateCenterComponent,
     AdminPowersComponent,
-    ResearchComponent
+    ResearchComponent,
+    CreateAdminComponent
   ],
   imports: [
     BrowserModule,

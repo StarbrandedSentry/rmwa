@@ -10,3 +10,23 @@ mat-expansion-panel-header {
 mat-expansion-panel {
   font-family: 'Athiti', sans-serif;
 }
+
+h3 {
+  border-bottom: #000000 solid 1px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+.create {
+  margin-top: 0.5rem;
+  border-top: #000000 solid 1px;
+  padding: 0.5rem;
+
+  mat-form-field {
+    width: 40%;
+  }
+}
