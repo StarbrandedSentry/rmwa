@@ -114,7 +114,11 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-raised-button (click)="stepper.reset()">Reset</button>
-        <button mat-raised-button color="primary" (click)="onConfirmClick()">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onConfirmClick(stepper)"
+        >
           Confirm
         </button>
       </div>

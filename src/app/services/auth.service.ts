@@ -8,6 +8,7 @@ import {
 import { User } from '../models/user.model';
 import { Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
+import { Center } from '../models/center.model';
 
 @Injectable({
   providedIn: 'root'
@@ -58,15 +59,28 @@ export class AuthService {
 
   updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.afFirestore.doc(
-      'users/${user.id}'
+      'users/' + user.uid
     );
 
     // const data = {
-    //   uid: user.uid,
     //   role: user.role,
-    //   name: user.name
+    //   name: user.name,
+    //   center
     // };
 
     return userRef.set(user, { merge: true });
   }
+
+  addCenterForUser(userID: string, centerID: string, center: Center) {
+    return this.afFirestore
+      .doc('users/' + userID + '/centers/' + centerID)
+      .set(center, { merge: true });
+  }
+
+  // updateUserData(user: User) {
+  //   const userRef: AngularFirestoreDocument<User> = this.afFirestore.doc(
+  //     'users/' + user.uid
+  //   );
+  //   return userRef.update(user);
+  // }
 }

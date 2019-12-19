@@ -4,4 +4,5 @@ export interface User {
   name?: string;
   displayName?: string;
   centerID?: string;
+  centerName?: string;
 }

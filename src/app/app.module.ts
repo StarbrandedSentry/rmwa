@@ -22,6 +22,7 @@ import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component
 import { CreateCategoryComponent } from './dialogs/create-category/create-category.component';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 import { CreateCenterComponent } from './home/sadmin-powers/create-center/create-center.component';
+import { CenterService } from './services/center.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { CreateCenterComponent } from './home/sadmin-powers/create-center/create
     FirebaseModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, CategoryService],
+  providers: [AuthService, CategoryService, CenterService],
   bootstrap: [AppComponent],
   entryComponents: [
     SigninComponent,
