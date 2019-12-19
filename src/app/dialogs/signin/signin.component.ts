@@ -34,11 +34,11 @@ export class SigninComponent implements OnInit {
 
   signIn() {
     this.isSignInLoading = true;
+    this.session.username = this.email;
+    this.session.password = this.password;
     this.afAuth.auth
       .signInWithEmailAndPassword(this.email, this.password)
       .then(result => {
-        this.session.username = this.email;
-        this.session.password = this.password;
         this.dialogRef.close();
       })
       .catch(error => {

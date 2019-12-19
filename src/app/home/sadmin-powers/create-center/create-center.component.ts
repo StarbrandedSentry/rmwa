@@ -43,12 +43,11 @@ export class CreateCenterComponent implements OnInit {
       adminPassword: ['', [Validators.required, Validators.minLength(5)]],
       adminConfirmPassword: ['', [Validators.required, Validators.minLength(5)]]
     });
-    console.log(this.session.password);
   }
 
   onConfirmClick(stepper: MatStepper): void {
     this.isCreateLoading = true;
-    /*this.afAuth.auth
+    this.afAuth.auth
       .createUserWithEmailAndPassword(
         this.adminGroup.value.adminEmail,
         this.adminGroup.value.adminPassword
@@ -88,8 +87,19 @@ export class CreateCenterComponent implements OnInit {
                         this.authService
                           .updateUserData(updateUser)
                           .then(updated => {
-                            this.isCreateLoading = false;
-                            stepper.reset();
+                            this.afAuth.auth
+                              .signInWithEmailAndPassword(
+                                this.session.username,
+                                this.session.password
+                              )
+                              .then(() => {
+                                this.isCreateLoading = false;
+                                stepper.reset();
+                              })
+                              .catch(error => {
+                                this.isCreateLoading = false;
+                                this.confirmError = error;
+                              });
                           })
                           .catch(error => {
                             this.isCreateLoading = false;
@@ -119,7 +129,7 @@ export class CreateCenterComponent implements OnInit {
       .catch(error => {
         this.confirmError = error;
         this.isCreateLoading = false;
-      });*/
+      });
   }
 
   onSecondNextClick(stepper: MatStepper): void {
