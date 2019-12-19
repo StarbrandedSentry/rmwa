@@ -1,14 +1,19 @@
-import { Directive, HostListener, Output, EventEmitter, Host } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Output,
+  EventEmitter,
+  Host
+} from '@angular/core';
 
 @Directive({
   selector: '[appDropZone]'
 })
 export class DropZoneDirective {
-
   @Output() dropped = new EventEmitter<FileList>();
   @Output() hovered = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {}
 
   @HostListener('drop', ['$event'])
   onDrop($event) {

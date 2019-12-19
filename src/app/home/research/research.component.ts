@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage, AngularFireUploadTask} from '@angular/fire/storage';
+import {
+  AngularFireStorage,
+  AngularFireUploadTask
+} from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { filter, finalize } from 'rxjs/operators';
 
@@ -9,7 +12,6 @@ import { filter, finalize } from 'rxjs/operators';
   styleUrls: ['./research.component.scss']
 })
 export class ResearchComponent implements OnInit {
-
   url: string;
 
   task: AngularFireUploadTask;
@@ -17,7 +19,7 @@ export class ResearchComponent implements OnInit {
   percentage: Observable<number>;
 
   snapshot: Observable<any>;
-  
+
   downloadURL: Observable<string>;
 
   isHovering: boolean;
@@ -25,27 +27,33 @@ export class ResearchComponent implements OnInit {
   constructor(private storage: AngularFireStorage) {}
 
   startUpload(event: FileList) {
-    const file = event.item(0)
-
-    const path = 'test/${new Date().getTime()}_${file.name}';
+    const file = event.item(0);
+    // const path = 'test/${new Date().getTime()}_${file.name}' + new Date().getTime() + '_' + file.name;
+    const path = 'test/' + new Date().getTime() + '_' + file.name;
 
     const ref = this.storage.ref(path);
 
-    this.task = this.storage.upload(path, file)
+    this.task = this.storage.upload(path, file);
 
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges();
 
-    this.task.snapshotChanges().pipe(
-      finalize(() => {
-        this.downloadURL = ref.getDownloadURL()
-        this.downloadURL.subscribe(url => (this.url = url));
-      })
-    ).subscribe();
+    this.task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = ref.getDownloadURL();
+          this.downloadURL.subscribe(url => (this.url = url));
+        })
+      )
+      .subscribe();
   }
 
   isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes
+    return (
+      snapshot.state === 'running' &&
+      snapshot.bytesTransferred < snapshot.totalBytes
+    );
   }
 
   ngOnInit() {}

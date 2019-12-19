@@ -59,7 +59,13 @@ import { AngularFireStorage } from '@angular/fire/storage';
     FirebaseModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, CategoryService, CenterService, SessionService, AngularFireStorage],
+  providers: [
+    AuthService,
+    CategoryService,
+    CenterService,
+    SessionService,
+    AngularFireStorage
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     SigninComponent,
