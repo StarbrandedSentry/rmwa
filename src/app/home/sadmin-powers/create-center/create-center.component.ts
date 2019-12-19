@@ -8,6 +8,7 @@ import { User } from '../../../models/user.model';
 import { Center } from '../../../models/center.model';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { SessionService } from '../../../services/session.service';
 
 @Component({
   selector: 'app-create-center',
@@ -27,7 +28,8 @@ export class CreateCenterComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private centService: CenterService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private session: SessionService
   ) {}
 
   ngOnInit() {
@@ -41,11 +43,12 @@ export class CreateCenterComponent implements OnInit {
       adminPassword: ['', [Validators.required, Validators.minLength(5)]],
       adminConfirmPassword: ['', [Validators.required, Validators.minLength(5)]]
     });
+    console.log(this.session.password);
   }
 
   onConfirmClick(stepper: MatStepper): void {
     this.isCreateLoading = true;
-    this.afAuth.auth
+    /*this.afAuth.auth
       .createUserWithEmailAndPassword(
         this.adminGroup.value.adminEmail,
         this.adminGroup.value.adminPassword
@@ -116,7 +119,7 @@ export class CreateCenterComponent implements OnInit {
       .catch(error => {
         this.confirmError = error;
         this.isCreateLoading = false;
-      });
+      });*/
   }
 
   onSecondNextClick(stepper: MatStepper): void {

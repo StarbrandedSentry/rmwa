@@ -25,6 +25,7 @@ import { CreateCenterComponent } from './home/sadmin-powers/create-center/create
 import { CenterService } from './services/center.service';
 import { AdminPowersComponent } from './home/admin-powers/admin-powers.component';
 import { ResearchComponent } from './home/research/research.component';
+import { SessionService } from './services/session.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { ResearchComponent } from './home/research/research.component';
     FirebaseModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, CategoryService, CenterService],
+  providers: [AuthService, CategoryService, CenterService, SessionService],
   bootstrap: [AppComponent],
   entryComponents: [
     SigninComponent,

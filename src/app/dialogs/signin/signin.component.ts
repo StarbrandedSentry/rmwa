@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { SessionService } from '../../services/session.service';
 // import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -17,7 +18,8 @@ export class SigninComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<SigninComponent>,
     private auth: AuthService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    public session: SessionService
   ) {}
 
   ngOnInit() {
@@ -35,6 +37,8 @@ export class SigninComponent implements OnInit {
     this.afAuth.auth
       .signInWithEmailAndPassword(this.email, this.password)
       .then(result => {
+        this.session.username = this.email;
+        this.session.password = this.password;
         this.dialogRef.close();
       })
       .catch(error => {
