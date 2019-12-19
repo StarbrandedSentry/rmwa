@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" (click)="closeMenu()">
+  <div class="logo" [routerLink]="['/home/dash']">RESEARCH</div>
+  <div class="buttons">
+    <a [routerLink]="['/home/dash']" routerLinkActive="nav-active"
+      ><div class="text">home</div></a
+    >
+    <a
+      *ngIf="user && user.role == 1"
+      [routerLink]="['/home/centers']"
+      routerLinkActive="nav-active"
+      ><div class="text">centers</div>
+    </a>
+    <a
+      *ngIf="user && user.role == 1"
+      [routerLink]="['/home/s-configure']"
+      routerLinkActive="nav-active"
+      ><div class="text">configure</div></a
+    >
+  </div>
+  <div *ngIf="afAuth.user | async; then userButton; else signInButton"></div>
+  <!-- IF THE USER IS SIGNED IN -->
+  <ng-template #userButton>
+    <div class="signed-in" (click)="toggleMenu(); $event.stopPropagation()">
+      {{ user?.displayName }}
+      <i class="material-icons">
+        arrow_drop_down
+      </i>
+    </div>
+    <div *ngIf="isMenuOpen" class="userMenu">
+      <button mat-button (click)="signOut()">
+        Sign Out
+      </button>
+    </div>
+  </ng-template>
+
+  <!--  IF THE USER IS SIGNED OUT  -->
+  <ng-template #signInButton>
+    <div class="login" (click)="openSignInDialog()">
+      SIGN IN
+    </div>
+  </ng-template>
+</mat-toolbar>
+<router-outlet></router-outlet>

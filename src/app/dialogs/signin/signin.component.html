@@ -1,0 +1,47 @@
+<div class="signin-body">
+  <div class="header">
+    <div class="close">
+      <i class="material-icons" (click)="closeSignInDialog()">
+        close
+      </i>
+    </div>
+    <h2>SIGN IN</h2>
+  </div>
+
+  <div class="main">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Email" type="email" [(ngModel)]="email" />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <input
+        matInput
+        placeholder="Password"
+        type="password"
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+    <div class="message" *ngIf="signInMessage">
+      {{ signInMessage }}
+      <i class="material-icons" (click)="removeMessage()">
+        close
+      </i>
+    </div>
+
+    <div class="spinner">
+      <mat-spinner *ngIf="isSignInLoading" diameter="35"></mat-spinner>
+    </div>
+    <div class="buttons">
+      <form (submit)="signIn()" action="#">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          (keydown.enter)="signIn()"
+        >
+          Sign In
+        </button>
+      </form>
+      <button mat-button (click)="SignUp()">Sign Up</button>
+    </div>
+  </div>
+</div>

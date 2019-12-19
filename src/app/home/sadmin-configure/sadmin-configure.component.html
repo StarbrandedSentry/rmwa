@@ -1,0 +1,90 @@
+<div class="body">
+  <div class="container">
+    <h2>Categories</h2>
+    <div class="table">
+      <div class="table-header">
+        <div class="name">NAME</div>
+        <div class="number">NUMBER OF RESEARCH</div>
+      </div>
+
+      <div class="table-content" *ngFor="let category of catService.categories">
+        <div class="name">{{ category.name }}</div>
+        <div class="number">{{ category.number }}</div>
+        <div class="table-buttons">
+          <i
+            class="material-icons"
+            matTooltip="Edit category name"
+            (click)="openEditDialog(category.id)"
+          >
+            edit
+          </i>
+          <i
+            class="material-icons"
+            matTooltip="Delete category"
+            (click)="openConfirmDialog(category.id)"
+          >
+            delete
+          </i>
+        </div>
+      </div>
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          class="primary"
+          (click)="openCreateCategoryDialog()"
+          (keydown.enter)="openCreateCategoryDialog()"
+        >
+          Add Category
+          <i class="material-icons">
+            add_circle_outline
+          </i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<mat-card>
+  <mat-card-title>Categories</mat-card-title>
+  <div class="table">
+    <div class="table-header">
+      <div class="name">NAME</div>
+      <div class="number">NUMBER OF RESEARCH</div>
+    </div>
+
+    <div class="table-content" *ngFor="let category of catService.categories">
+      <div class="name">{{ category.name }}</div>
+      <div class="number">{{ category.number }}</div>
+      <div class="table-buttons">
+        <i
+          class="material-icons"
+          matTooltip="Edit category name"
+          (click)="openEditDialog(category.id)"
+        >
+          edit
+        </i>
+        <i
+          class="material-icons"
+          matTooltip="Delete category"
+          (click)="openConfirmDialog(category.id)"
+        >
+          delete
+        </i>
+      </div>
+    </div>
+  </div>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      class="primary"
+      (click)="openCreateCategoryDialog()"
+    >
+      Add Category
+      <i class="material-icons">
+        add_circle_outline
+      </i>
+    </button>
+  </mat-card-actions>
+</mat-card>-->

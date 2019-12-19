@@ -1,0 +1,29 @@
+.home {
+  //background-color: blue;
+  min-height: 93vh;
+  height: auto;
+  flex-direction: column;
+  display: flex;
+  padding: 2% 15%;
+}
+
+.mobile {
+  display: none;
+  min-height: 100vh;
+  height: auto;
+}
+
+.nav {
+  background-color: var(--primary-clr);
+  color: #ffffff;
+  padding: 1rem;
+}
+
+@media all and (max-width: 720px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: flex;
+  }
+}

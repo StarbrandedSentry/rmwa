@@ -1,0 +1,59 @@
+.table-header {
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  font-weight: 700;
+  border-bottom: #000000 solid 1px;
+  padding: 0.5rem 1rem;
+}
+
+.table-content {
+  display: flex;
+  padding: 0.5rem 1rem;
+  font-family: 'Athiti', sans-serif;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-buttons {
+  margin-left: auto;
+
+  .material-icons {
+    margin-left: 5px;
+
+    &:hover {
+      color: #ee4054;
+    }
+  }
+}
+
+mat-card-title {
+  margin-bottom: 1rem;
+}
+
+.name {
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.number {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  margin-left: auto;
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+}

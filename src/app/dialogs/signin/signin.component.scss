@@ -1,0 +1,44 @@
+.close {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+}
+
+h2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  //color: mat-color($rmwa-primary, 700);
+  //color: #e93243;
+  color: #ffffff;
+}
+
+.header {
+  background-color: #ee4054;
+  padding: 1rem 1rem;
+}
+
+.main {
+  padding: 1rem 3rem;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.buttons {
+  width: 100%;
+  button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+.spinner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+}

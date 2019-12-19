@@ -1,0 +1,123 @@
+<div class="body">
+  <div class="row">
+    <div class="button" [routerLink]="['/home/centers']">
+      <i class="material-icons">
+        keyboard_backspace
+      </i>
+      Go Back
+    </div>
+  </div>
+
+  <mat-horizontal-stepper linear="true" #stepper>
+    <!--    CENTER STEP  -->
+    <mat-step [stepControl]="centerGroup">
+      <form [formGroup]="centerGroup">
+        <ng-template matStepLabel>Center information</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Center name"
+            formControlName="centerName"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Date created"
+            formControlName="centerDateCreated"
+            [matDatepicker]="datecreated"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datecreated"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datecreated></mat-datepicker>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <!--    ADMIN STEP  -->
+    <mat-step [stepControl]="adminGroup">
+      <form [formGroup]="adminGroup">
+        <ng-template matStepLabel>Add an admin</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Admin name"
+            formControlName="adminName"
+            required
+          />
+        </mat-form-field>
+        <div class="row">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Admin email"
+              formControlName="adminEmail"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Admin password"
+              formControlName="adminPassword"
+              type="password"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Confirm password"
+              formControlName="adminConfirmPassword"
+              type="password"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div *ngIf="passwordError" class="message">
+          {{ passwordError }}
+          <i class="material-icons" (click)="removeMessage()">
+            close
+          </i>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="onSecondNextClick(stepper)"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirm</ng-template>
+      <div *ngIf="isCreateLoading">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+      <div *ngIf="confirmError" class="message">
+        {{ confirmError }}
+        <i class="material-icons" (click)="removeMessage()">
+          close
+        </i>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button color="primary" (click)="onConfirmClick()">
+          Confirm
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

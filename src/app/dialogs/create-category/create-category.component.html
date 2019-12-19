@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Create a category</h1>
+<div mat-dialog-content>
+  <mat-form-field style="width: 100%">
+    <input
+      matInput
+      type="text"
+      placeholder="Category name"
+      [(ngModel)]="categoryName"
+    />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="newCategory()">
+    Create
+  </button>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+</div>

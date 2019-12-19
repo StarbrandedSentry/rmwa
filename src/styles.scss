@@ -1,0 +1,195 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$primary-color: (
+  50: #fde8ea,
+  100: #fac6cc,
+  200: #f7a0aa,
+  300: #f37987,
+  400: #f15d6e,
+  500: #ee4054,
+  600: #ec3a4d,
+  700: #e93243,
+  800: #e72a3a,
+  900: #e21c29,
+  A100: #ffffff,
+  A200: #ffe4e5,
+  A400: #ffb1b5,
+  A700: #ff979d,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$accent-color: (
+  50: #ebf9e7,
+  100: #cdf1c3,
+  200: #ace89c,
+  300: #8adf74,
+  400: #71d856,
+  500: #58d138,
+  600: #50cc32,
+  700: #47c62b,
+  800: #3dc024,
+  900: #2db517,
+  A100: #ebffe8,
+  A200: #bdffb5,
+  A400: #90ff82,
+  A700: #7aff69,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$rmwa-primary: mat-palette($primary-color);
+$rmwa-accent: mat-palette($accent-color);
+
+// The warn palette is optional (defaults to red).
+$rmwa-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$rmwa-theme: mat-light-theme($rmwa-primary, $rmwa-accent, $rmwa-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+@include angular-material-theme($rmwa-theme);
+
+:root {
+  --primary-clr: #ee4054;
+  --primary-light-clr: #f37987;
+  --primary-dark-clr: #e93243;
+  --secondary-clr: #566b7e;
+}
+
+* {
+  box-sizing: inherit;
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Raleway', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+  font-family: 'Athiti', sans-serif;
+}
+body {
+  margin: 0;
+  background-color: #fafafa;
+  //background-color: #f5f5f5;
+}
+
+.logo {
+  outline: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+i {
+  &.material-icons {
+    cursor: pointer;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-component {
+  mat-dialog-container {
+    padding: 0;
+  }
+}
+
+.message {
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #e93243;
+  border-radius: 3px;
+  color: #ffffff;
+  margin: 1rem 0;
+
+  .material-icons {
+    margin-left: auto;
+  }
+}
+
+.body {
+  //background-color: blue;
+  min-height: 93vh;
+  height: auto;
+  flex-direction: column;
+  display: flex;
+  padding: 2% 15%;
+}
+
+.mat-input-element {
+  font-family: 'Athiti', sans-serif;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  outline: none;
+
+  &:hover {
+    color: #ee4054;
+  }
+}
