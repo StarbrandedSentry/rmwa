@@ -1,3 +1,26 @@
-<div class="body">
-  TODO
+<div class="dropzone" appDropZone (hovered)="toggleHover($event)" (dropped)="startUpload()" [class.hovering]="isHovering">
+
+    <p>Drag and Drop a File</p>
+    <div class="file">
+      <label class="file-label"></label>
+      <input type="file" (change)="startUpload($event.target.files)">
+
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-upload"></i>
+        </span>
+        <span class="file-label">
+          or choose a file...
+        </span>
+      </span>
+    </div>
 </div>
+
+  <div *ngIf="percentage | async as pct">
+    <progress [value]="pct" max="100"></progress>
+  </div>
+
+  <div *ngIf="downloadURL | async as url">
+    <h3>Researches</h3>
+    <a [href]="url">Download</a>
+  </div>

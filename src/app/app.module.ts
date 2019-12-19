@@ -27,6 +27,8 @@ import { AdminPowersComponent } from './home/admin-powers/admin-powers.component
 import { ResearchComponent } from './home/research/research.component';
 import { SessionService } from './services/session.service';
 import { CreateAdminComponent } from './home/sadmin-powers/create-admin/create-admin.component';
+import { DropZoneDirective } from './home/research/drop-zone.directive';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { CreateAdminComponent } from './home/sadmin-powers/create-admin/create-a
     CreateCenterComponent,
     AdminPowersComponent,
     ResearchComponent,
-    CreateAdminComponent
+    CreateAdminComponent,
+    DropZoneDirective
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { CreateAdminComponent } from './home/sadmin-powers/create-admin/create-a
     FirebaseModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, CategoryService, CenterService, SessionService],
+  providers: [AuthService, CategoryService, CenterService, SessionService, AngularFireStorage],
   bootstrap: [AppComponent],
   entryComponents: [
     SigninComponent,
