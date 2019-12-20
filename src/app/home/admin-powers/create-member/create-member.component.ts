@@ -82,6 +82,7 @@ export class CreateMemberComponent implements OnInit {
                       this.session.password
                     )
                     .then(logResult => {
+                      this.authService.user.role = 2;
                       this.name = '';
                       this.email = '';
                       this.confirmPassword = '';

@@ -11,8 +11,14 @@ export class GuardService {
   checkRole(role: number) {
     this.authService.user$.subscribe(user => {
       if (!user || user.role !== role) {
+        // if (this.authService.user.role === role) {
+        //   return;
+        // }
         this.router.navigateByUrl('/home/dash').then(() => {});
       }
     });
+    // if (!this.authService.user || this.authService.user.role !== role) {
+    //   this.router.navigateByUrl('/home/dash').then(() => {});
+    // }
   }
 }

@@ -53,6 +53,7 @@ export class NavbarComponent implements OnInit {
       .signOut()
       .then(result => {
         console.log(result);
+        // this.auth.user.role = -1;
       })
       .catch(error => {
         console.log(error);
