@@ -5,6 +5,7 @@ import {
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { filter, finalize } from 'rxjs/operators';
+import { GuardService } from '../../services/guard.service';
 
 @Component({
   selector: 'app-research',
@@ -24,7 +25,10 @@ export class ResearchComponent implements OnInit {
 
   isHovering: boolean;
 
-  constructor(private storage: AngularFireStorage) {}
+  constructor(
+    private storage: AngularFireStorage,
+    private guard: GuardService
+  ) {}
 
   startUpload(event: FileList) {
     const file = event.item(0);
@@ -56,5 +60,7 @@ export class ResearchComponent implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.guard.checkRole(2);
+  }
 }

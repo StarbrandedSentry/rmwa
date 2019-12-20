@@ -15,6 +15,9 @@ import { Center } from '../models/center.model';
 })
 export class AuthService {
   user$: Observable<User>;
+  user: User;
+  center$: Observable<Center[]>;
+  centers: Center[];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -23,6 +26,22 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
+          this.center$ = this.afFirestore
+            .collection('users/' + user.uid + '/centers')
+            .snapshotChanges()
+            .pipe(
+              map(actions =>
+                actions.map(a => {
+                  const data = a.payload.doc.data() as Center;
+                  data.id = a.payload.doc.id;
+                  return data;
+                })
+              )
+            );
+          this.center$.subscribe(center => {
+            this.centers = center;
+          });
+
           return this.afFirestore
             .doc<User>('users/' + user.uid)
             .snapshotChanges()
@@ -47,6 +66,9 @@ export class AuthService {
         }
       })
     );
+    this.user$.subscribe(user => {
+      this.user = user;
+    });
   }
 
   // EmailSignIn(email: string, password: string) {

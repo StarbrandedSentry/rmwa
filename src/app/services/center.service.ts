@@ -18,6 +18,9 @@ export class CenterService {
   admins: User[];
   adminsCollection: AngularFirestoreCollection<User>;
   centerCollection: AngularFirestoreCollection<Center>;
+  members$: Observable<User[]>;
+  members: User[];
+  membersCollection: AngularFirestoreCollection<User>;
 
   constructor(private afFirestore: AngularFirestore) {
     this.centerCollection = this.afFirestore.collection<Center>(
@@ -64,6 +67,30 @@ export class CenterService {
     );
     this.admins$.subscribe(admins => {
       this.admins = admins;
+    });
+  }
+
+  addMember(centerID: string, memberID: string, user: User) {
+    return this.afFirestore
+      .doc('centers/' + centerID + '/members/' + memberID)
+      .set(user, { merge: true });
+  }
+
+  getMembers(centerID: string) {
+    this.membersCollection = this.afFirestore.collection<User>(
+      'centers/' + centerID + '/members'
+    );
+    this.members$ = this.membersCollection.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          const data = a.payload.doc.data() as User;
+          data.uid = a.payload.doc.id;
+          return data;
+        })
+      )
+    );
+    this.members$.subscribe(member => {
+      this.members = member;
     });
   }
 }

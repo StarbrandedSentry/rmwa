@@ -1,0 +1,13 @@
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+h2 {
+  border-bottom: #000000 solid 1px;
+}
+
+mat-form-field {
+  width: 40%;
+}

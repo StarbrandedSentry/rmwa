@@ -29,6 +29,7 @@ import { SessionService } from './services/session.service';
 import { CreateAdminComponent } from './home/sadmin-powers/create-admin/create-admin.component';
 import { DropZoneDirective } from './home/research/drop-zone.directive';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { CreateMemberComponent } from './home/admin-powers/create-member/create-member.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
     AdminPowersComponent,
     ResearchComponent,
     CreateAdminComponent,
-    DropZoneDirective
+    DropZoneDirective,
+    CreateMemberComponent
   ],
   imports: [
     BrowserModule,

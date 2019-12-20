@@ -1,0 +1,47 @@
+<div class="body">
+  <div class="row">
+    <div class="button" [routerLink]="['/home/admin']">
+      <i class="material-icons">
+        keyboard_backspace
+      </i>
+      GO BACK
+    </div>
+  </div>
+  <h2>Member Information</h2>
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" type="email" [(ngModel)]="email" />
+  </mat-form-field>
+  <div class="row">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Password"
+        type="password"
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Confirm password"
+        type="password"
+        [(ngModel)]="confirmPassword"
+      />
+    </mat-form-field>
+  </div>
+  <div *ngIf="isCreateLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="message" *ngIf="error">
+    {{ error }}
+    <i class="material-icons" (click)="removeError()">
+      close
+    </i>
+  </div>
+  <button mat-raised-button color="primary" (click)="openConfirmDialog()">
+    Add
+  </button>
+</div>

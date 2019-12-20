@@ -9,6 +9,7 @@ import { CreateCenterComponent } from './home/sadmin-powers/create-center/create
 import { AdminPowersComponent } from './home/admin-powers/admin-powers.component';
 import { ResearchComponent } from './home/research/research.component';
 import { CreateAdminComponent } from './home/sadmin-powers/create-admin/create-admin.component';
+import { CreateMemberComponent } from './home/admin-powers/create-member/create-member.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: 'create-center', component: CreateCenterComponent },
       { path: 'research', component: ResearchComponent },
       { path: 'admin', component: AdminPowersComponent },
-      { path: 'create-admin', component: CreateAdminComponent }
+      { path: 'create-admin', component: CreateAdminComponent },
+      { path: 'create-member', component: CreateMemberComponent }
     ]
   }
 ];
